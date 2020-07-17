@@ -59,9 +59,8 @@
 			}
 		},
 		methods:{
-			agregarCarrito(index){
-				let i = this.productos[index]
-				this.carrito.push(i)
+			agregarCarrito(){
+				this.carrito.push(this.productos)
 			}
 		}
 	}
