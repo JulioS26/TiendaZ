@@ -97,14 +97,7 @@
 				<b-col cols="9">
 					<b-form-group label="Buscar por marca">
 						<div>
-							<b-nav tabs>
-								<v-img src="@/assets/apolo.png" aspect-ratio="2.5" contain></v-img>
-								<v-img src="@/assets/apolo.png" aspect-ratio="2.5" contain></v-img>
-								<v-img src="@/assets/apolo.png" aspect-ratio="2.5" contain></v-img>
-								<v-img src="@/assets/apolo.png" aspect-ratio="2.5" contain></v-img>
-								<v-img src="@/assets/apolo.png" aspect-ratio="2.5" contain></v-img>
-								<v-img src="@/assets/apolo.png" aspect-ratio="2.5" contain></v-img>
-							</b-nav>
+							<Carousel/>
 						</div>
 					</b-form-group>
 				</b-col>
@@ -181,6 +174,7 @@
 </template>
 
 <script>
+import Carousel from './Carousel/Carousel.vue'
 	export default {
 		data() {
 			return {
@@ -241,6 +235,9 @@
 		},
 		computed: {
 
+		},
+		components:{
+			Carousel
 		},
 		methods:{
 			habilitar(){
