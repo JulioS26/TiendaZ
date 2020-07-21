@@ -26,7 +26,8 @@
 							></v-list-item-avatar>
 						</v-list-item>
 						<v-card-actions>
-							<b-button @click="agregarCarrito(producto)" variant="info">Agregar al carrito</b-button>
+							<label v-if="producto.cantidad==0">Sin stock</label>
+							<b-button v-if="producto.cantidad >= 1" @click="agregarCarrito(producto)" variant="info">Agregar al carrito</b-button>
 						</v-card-actions>
 					</v-card>
 				</template>
@@ -67,22 +68,6 @@
 				</b-col>
 			</b-row>
 		</b-container>
-
-		<template>
-			<div>
-				<b-button v-b-toggle.sidebar-1>Toggle Sidebar</b-button>
-				<b-sidebar id="sidebar-1" title="Sidebar" shadow>
-					<div class="px-3 py-2">
-						<p>
-							Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-							in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-						</p>
-
-						<b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
-					</div>
-				</b-sidebar>
-			</div>
-		</template>
 	</div>
 </template>
 
@@ -93,21 +78,22 @@
 			return{
 				carritos:[],
 				productos:[
-				{id:1, name:'manzana', precio:50, carrito:false},
-				{id:2, name:'cambur', precio:100, carrito:false},
-				{id:3, name:'pera', precio:75, carrito:false},
-				{id:4, name:'naranja', precio:90, carrito:false},
-				{id:5, name:'fresa', precio:30, carrito:false},
-				{id:6, name:'uvas', precio:25, carrito:false},
-				{id:7, name:'kiwi', precio:125, carrito:false},
-				{id:8, name:'Sandia', precio:200, carrito:false},
-				{id:9, name:'Carne', precio:700, carrito:false},
+				{id:1, name:'manzana', precio:50, cantidad:20, carrito:false},
+				{id:2, name:'cambur', precio:100, cantidad:20, carrito:false},
+				{id:3, name:'pera', precio:75, cantidad:20, carrito:false},
+				{id:4, name:'naranja', precio:90, cantidad:20, carrito:false},
+				{id:5, name:'fresa', precio:30, cantidad:20, carrito:false},
+				{id:6, name:'uvas', precio:25, cantidad:20, carrito:false},
+				{id:7, name:'kiwi', precio:125, cantidad:0, carrito:false},
+				{id:8, name:'Sandia', precio:200, cantidad:20, carrito:false},
+				{id:9, name:'Carne', precio:700, cantidad:20, carrito:false},
 				]
 			}
 		},
 		methods:{
 			agregarCarrito(producto){
 				this.productos[producto.id-1].carrito=true
+				producto.cantidad-=1
 				this.carritos.push(producto)
 			},
 			eliminarCarrito(index){
