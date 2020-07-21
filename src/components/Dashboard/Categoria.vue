@@ -10,33 +10,35 @@
 						</b-button>
 					</div>
 					<div v-if="(disabled==false)">
-						<b-form-group label="Categoria">
-								<b-form-radio v-model="selected2" name="some-radios" value="Todos">Todos</b-form-radio>
-								<b-form-radio v-model="selected2" name="some-radios" value="Damas">Damas</b-form-radio>
-								<b-form-radio v-model="selected2" name="some-radios" value="Caballeros">Caballeros</b-form-radio>
-								<b-form-radio v-model="selected2" name="some-radios" value="Niños">Niños</b-form-radio>
+						<b-form-group label="Categoria" >
+							<b-form-radio v-model="selected2" name="some-radios" value="Todos">Todos</b-form-radio>
+							<b-form-radio v-model="selected2" name="some-radios" value="Damas">Damas</b-form-radio>
+							<b-form-radio v-model="selected2" name="some-radios" value="Caballeros">Caballeros</b-form-radio>
+							<b-form-radio v-model="selected2" name="some-radios" value="Niños">Niños</b-form-radio>
 						</b-form-group>
 					</div>
 				</b-col>
 				<b-col cols="9">
 					<b-form-group label="Buscar por categorias">
 						<div>
-							<b-nav tabs>
+							<b-nav tabs >
 								<b-nav-item @click="todos">Todos</b-nav-item>
 								<b-nav-item @click="damas">Damas</b-nav-item>
 								<b-nav-item @click="caballeros">Caballeros</b-nav-item>
 								<b-nav-item @click="ninos">Niños</b-nav-item>
 							</b-nav>
-							<div v-if="(todo==true)">
-								Todos
+							<div v-if="(todo==true)" class="tabs">
+								<div v-for="pic in pics" :key="pic.id">							
+									<img :src="getImgUrl(pic)" v-bind:alt="pic">
+								</div>
 							</div>
-							<div v-if="(dama==true)">
+							<div v-if="(dama==true)" class="tabs">
 								Damas
 							</div>
-							<div v-if="(caballero==true)">
+							<div v-if="(caballero==true)" class="tabs">
 								Caballeros
 							</div>
-							<div v-if="(nino==true)">
+							<div v-if="(nino==true)" class="tabs">
 								Niños
 							</div>
 						</div>
@@ -50,44 +52,44 @@
 					<div v-if="(disabled==false)">
 						<b-form-group label="Talla">
 							<template>
-								
-									<div >
-										<b-form-group >
-											<b-form-checkbox-group
-											v-model="selected"
-											:options="options"
-											stacked
-											buttons
-											class="px-1"
-											></b-form-checkbox-group>
 
-											<b-form-checkbox-group
-											v-model="selected"
-											:options="options2"
-											stacked
-											buttons
-											class="px-1"
-											></b-form-checkbox-group>
-								
-											<b-form-checkbox-group
-											v-model="selected"
-											:options="options3"
-											stacked
-											buttons
-											class="px-1"
-											></b-form-checkbox-group>
+								<div >
+									<b-form-group >
+										<b-form-checkbox-group
+										v-model="selected"
+										:options="options"
+										stacked
+										buttons
+										class="px-1"
+										></b-form-checkbox-group>
 
-											<b-form-checkbox-group
-											v-model="selected"
-											:options="options4"
-											stacked
-											buttons
-											class="px-1"
-											></b-form-checkbox-group>
-										</b-form-group>
-									</div>
-									<div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
-								
+										<b-form-checkbox-group
+										v-model="selected"
+										:options="options2"
+										stacked
+										buttons
+										class="px-1"
+										></b-form-checkbox-group>
+
+										<b-form-checkbox-group
+										v-model="selected"
+										:options="options3"
+										stacked
+										buttons
+										class="px-1"
+										></b-form-checkbox-group>
+
+										<b-form-checkbox-group
+										v-model="selected"
+										:options="options4"
+										stacked
+										buttons
+										class="px-1"
+										></b-form-checkbox-group>
+									</b-form-group>
+								</div>
+								<div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+
 							</template>
 						</b-form-group>
 					</div>
@@ -147,7 +149,7 @@
 									</v-card>
 								</template>
 							</div>
-							
+
 						</div>
 						<div v-if="(dama2==true)">
 							Popular Damas
@@ -160,22 +162,22 @@
 						</div>
 					</div>
 				</b-form-group>
-				</b-col>
-			</b-row>
+			</b-col>
+		</b-row>
 
-			<b-row>
-				<b-col cols="3">
-					<div v-if="(disabled==false)">
-						<b-form-group label="Marcas">
-							
-						</b-form-group>
-					</div>
-				</b-col>
-				<b-col cols="9">
-				</b-col>
-			</b-row>
-		</b-container>
-	</div>
+		<b-row>
+			<b-col cols="3">
+				<div v-if="(disabled==false)">
+					<b-form-group label="Marcas">
+
+					</b-form-group>
+				</div>
+			</b-col>
+			<b-col cols="9">
+			</b-col>
+		</b-row>
+	</b-container>
+</div>
 </template>
 
 <script>
@@ -267,7 +269,24 @@
 			},
 			ninos2(){
 				this.nino2=true, this.dama2=false, this.todo2=false, this.caballero2=false 
+			},
+			getImgUrl(pic) {
+				return require('@/assets/'+pic)
 			}
 		}
 	}
 </script>
+
+<style type="text/css">
+	.container{
+		width: 100%;
+	}
+	.tabs{
+		width:90%;
+
+	}
+
+	.tabs:hover{
+		background: rgba(0,0,0,0.4);
+	}
+</style>
