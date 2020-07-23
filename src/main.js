@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import firebase from 'firebase'
+// Importamos JQuery
+window.$ = window.jQuery = require('jquery');
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 

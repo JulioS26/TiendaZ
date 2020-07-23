@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <router-link class="navbar-item" to="/">
-      <h3 class="title is-3">ZapateriaArmalot</h3>
+      <h3 class="title is-3">ZapatriaArmalot</h3>
     </router-link>
 
     <a role="button" class="navbar-burger burger" :class="{'is-active' : isOpen}" @click.prevent="toggleMenu" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -12,7 +12,7 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu" :class="{'is-active' : isOpen}">
+  <div id="navbarBasicExample" class="navbar-menu mSticky" :class="{'is-active' : isOpen}">
     <div class="navbar-end">
       <div class="navbar-item">
         <template v-if="user">
@@ -44,10 +44,47 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
+
+<div>
+<b-navbar toggleable="lg" type="dark" variant="info" class="mSticky" >
+    <b-navbar-brand href="#">
+      <router-link class="navbar-item" to="/">
+        <h3 class="title is-2">ZaperiaArmalot</h3>
+      </router-link>
+    </b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav >
+      
+
+      <!-- Right aligned nav items -->
+      <b-navbar-nav class="ml-auto">
+        <template v-if="user">
+          <b-nav-item-dropdown v-bind="'user.email'" right>
+            <li href="#">aa</li>
+            <router-link class="dropdown-item" to="/dashboard">Dasboard</router-link>
+            <li  @click.prevent="logout">Log out</li>
+          </b-nav-item-dropdown>
+        </template>
+
+
+        
+
+          <!-- Using 'button-content' slot -->
+        <template v-else>
+          <b-button variant="success" to="/login/administration" class="">Login</b-button>
+          <b-button variant="secondary" to="/register/administration" class="mx-2">Register</b-button>
+        </template>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
 </template>
 
 <script>
+  import '@/js/mStiky.js'
   import firebase from 'firebase'
   import '@/views/Client/Autentificacion/Register.vue'
   export default{
