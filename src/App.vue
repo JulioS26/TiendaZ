@@ -19,6 +19,7 @@
 import Navegation from '@/components/Layout/Client/Navigation.vue'
 import NavegationA from '@/components/Layout/Administration/Navigation.vue'
 import Footer from '@/components/Footer/Footer.vue'
+
 export default {
   name: 'App',
 

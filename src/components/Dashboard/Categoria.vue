@@ -9,6 +9,7 @@
 							Buscqueda por filtro
 						</b-button>
 					</div>
+
 					<div v-if="(disabled==false)">
 						<b-form-group label="Categoria" >
 							<b-form-radio v-model="selected2" name="some-radios" value="Todos">Todos</b-form-radio>
@@ -17,38 +18,7 @@
 							<b-form-radio v-model="selected2" name="some-radios" value="Niños">Niños</b-form-radio>
 						</b-form-group>
 					</div>
-				</b-col>
-				<b-col cols="9">
-					<b-form-group label="Buscar por categorias">
-						<div>
-							<b-nav tabs >
-								<b-nav-item @click="todos">Todos</b-nav-item>
-								<b-nav-item @click="damas">Damas</b-nav-item>
-								<b-nav-item @click="caballeros">Caballeros</b-nav-item>
-								<b-nav-item @click="ninos">Niños</b-nav-item>
-							</b-nav>
-							<div v-if="(todo==true)" class="tabs">
-								<div v-for="pic in pics" :key="pic.id">							
-									<img :src="getImgUrl(pic)" v-bind:alt="pic">
-								</div>
-							</div>
-							<div v-if="(dama==true)" class="tabs">
-								Damas
-							</div>
-							<div v-if="(caballero==true)" class="tabs">
-								Caballeros
-							</div>
-							<div v-if="(nino==true)" class="tabs">
-								Niños
-							</div>
-						</div>
-					</b-form-group>
-				</b-col>
-			</b-row>
-
-
-			<b-row>
-				<b-col cols="3" class="">
+								
 					<div v-if="(disabled==false)">
 						<b-form-group label="Talla">
 							<template>
@@ -93,19 +63,7 @@
 							</template>
 						</b-form-group>
 					</div>
-				</b-col>
-				<b-col cols="9">
-					<b-form-group label="Buscar por marca">
-						<div>
-							<Carousel/>
-						</div>
-					</b-form-group>
-				</b-col>
-			</b-row>
 
-
-			<b-row>
-				<b-col cols="3">
 					<div v-if="(disabled==false)">
 						<b-form-group label="Categoria">
 							<template>
@@ -116,6 +74,62 @@
 							</template>
 						</b-form-group>
 					</div>
+					
+					<div v-if="(disabled==false)">
+					<b-form-group label="Marcas">
+
+					</b-form-group>
+					</div>
+				</b-col>
+				<b-col cols="9">
+					<b-row>
+						<b-col>
+							<b-form-group label="Buscar por categorias">
+								<div>
+									<b-nav tabs >
+										<b-nav-item @click="todos">Todos</b-nav-item>
+										<b-nav-item @click="damas">Damas</b-nav-item>
+										<b-nav-item @click="caballeros">Caballeros</b-nav-item>
+										<b-nav-item @click="ninos">Niños</b-nav-item>
+									</b-nav>
+									<div v-if="(todo==true)" class="tabs">
+										<div v-for="pic in pics" :key="pic.id">							
+											<img :src="getImgUrl(pic)" v-bind:alt="pic">
+										</div>
+									</div>
+									<div v-if="(dama==true)" class="tabs">
+										Damas
+									</div>
+									<div v-if="(caballero==true)" class="tabs">
+										Caballeros
+									</div>
+									<div v-if="(nino==true)" class="tabs">
+										Niños
+									</div>
+								</div>
+						</b-form-group>
+						</b-col>
+					</b-row>
+					<b-row>
+						<b-col>
+							<b-col cols="9">
+								<b-form-group label="Buscar por marca">
+									<div>
+										<Carousel/>
+									</div>
+								</b-form-group>
+							</b-col>
+						</b-col>
+					</b-row>
+				</b-col>
+			</b-row>
+
+
+
+
+			<b-row>
+				<b-col cols="3">
+					
 				</b-col>
 				<b-col cols="9">
 					<b-form-group label="Buscar por popular">
@@ -157,20 +171,8 @@
 				</b-form-group>
 			</b-col>
 		</b-row>
-
-		<b-row>
-			<b-col cols="3">
-				<div v-if="(disabled==false)">
-					<b-form-group label="Marcas">
-
-					</b-form-group>
-				</div>
-			</b-col>
-			<b-col cols="9">
-			</b-col>
-		</b-row>
-	</b-container>
-</div>
+		</b-container>
+	</div>
 </template>
 
 <script>
