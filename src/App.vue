@@ -8,11 +8,13 @@
       <template v-else>
         <NavegationA/>
       </template>
-      <template>
-        <Footer/>
-      </template>
     </div>
+
     <router-view/>
+
+    <div>
+      <Footer/>
+    </div>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ import Footer from '@/components/Footer/Footer.vue'
 import Header from '@/components/Header/Header.vue'
 
 export default {
-  name: 'App',
+  name: 'app',
 
   components: {
     Navegation,

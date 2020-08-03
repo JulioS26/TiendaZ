@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+=======
+  <nav class="navbar mSticky" role="navigation" aria-label="main navigation">
+>>>>>>> master
   <div class="navbar-brand">
     <router-link class="navbar-item" to="/">
       <h3 class="title is-3">ZapatriaArmalot</h3>

@@ -1,6 +1,5 @@
 <template>
-	<div>
-		<b-container>
+    <b-container>
 			<b-row>
 				<b-col cols="3" v-for="producto in productos" :key="producto.id">
 					<template>
@@ -68,12 +67,10 @@
 				</b-col>
 			</b-row>
 		</b-container>
-	</div>
 </template>
-
 <script>
-	export default{
-		name: 'Carrito',
+export default {
+    name: 'Carrito',
 		data(){
 			return{
 				carritos:[],
@@ -100,5 +97,5 @@
 				this.carritos.splice(index,1)
 			}
 		}
-	}
+}
 </script>
