@@ -1,4 +1,6 @@
-(function ($, undefined) {
+import $ from 'jquery'
+const newLocal = '_newLocal';
+(function ($,newLocal) {
     'use strict';
     var defaults = {
         item: 3,
@@ -37,12 +39,12 @@
         swipeThreshold: 40,
         responsive: [],
         /* jshint ignore:start */
-        onBeforeStart: function ($el) {},
-        onSliderLoad: function ($el) {},
-        onBeforeSlide: function ($el, scene) {},
-        onAfterSlide: function ($el, scene) {},
-        onBeforeNextSlide: function ($el, scene) {},
-        onBeforePrevSlide: function ($el, scene) {}
+        onBeforeStart: function () {},
+        onSliderLoad: function () {},
+        onBeforeSlide: function () {},
+        onAfterSlide: function () {},
+        onBeforeNextSlide: function () {},
+        onBeforePrevSlide: function () {}
         /* jshint ignore:end */
     };
     $.fn.lightSlider = function (options) {
@@ -68,7 +70,6 @@
         }
         var $children = $el.children(),
             windowW = $(window).width(),
-            breakpoint = null,
             resposiveObj = null,
             length = 0,
             w = 0,
@@ -96,15 +97,14 @@
                 if (windowW < settings.responsive[0].breakpoint) {
                     for (var i = 0; i < settings.responsive.length; i++) {
                         if (windowW < settings.responsive[i].breakpoint) {
-                            breakpoint = settings.responsive[i].breakpoint;
                             resposiveObj = settings.responsive[i];
                         }
                     }
                 }
-                if (typeof resposiveObj !== 'undefined' && resposiveObj !== null) {
+                if (typeof resposiveObj !== '_newLocal' && resposiveObj !== null) {
                     for (var j in resposiveObj.settings) {
                         if (resposiveObj.settings.hasOwnProperty(j)) {
-                            if (typeof settingsTemp[j] === 'undefined' || settingsTemp[j] === null) {
+                            if (typeof settingsTemp[j] === '_newLocal' || settingsTemp[j] === null) {
                                 settingsTemp[j] = settings[j];
                             }
                             settings[j] = resposiveObj.settings[j];
@@ -1137,4 +1137,4 @@
         });
         return this;
     };
-}(jQuery));
+}($));

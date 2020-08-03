@@ -157,24 +157,17 @@
 				</div>
 			</li>
 			<!--20-->
-			<li class="item-a">
-				<!--slider-box-->
-				<div class="box">
-					<!--model-->
-					<button><img src="@/assets/img/20.png" class="model"></button>
-				</div>
-			</li>
+			
 		</ul>
 	</div>
 	</div>
 </template>
 
 <script>
-	import '../../../node_modules/carousel/lightslider.css'
-	import '../../../node_modules/carousel/styles.css'
-	// import '../../../node_modules/carousel/JQuery3.3.1.js'
-	// import '../../../node_modules/carousel/lightslider.js'
-	// import '../../../node_modules/carousel/script.js'
+	import '@/css/lightslider.css'
+	import '@/css/styles.css'
+	import '@/js/lightslider.js'
+	import '@/js/script.js'
 	export default{
 		data(){
 			return{
